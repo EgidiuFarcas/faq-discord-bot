@@ -8,6 +8,25 @@ const configPath = path.join(__dirname, '../../config.json');
 export default class Config {
     static config = JSON.parse(fs.readFileSync(configPath));
 
+    static async addChannels(guildID, channelIDs){
+        let guild = this.config.guilds.find(guild => guild.id === guildID);
+        channelIDs.forEach(id => {
+            let exists = guild.channels.find(ch => ch === id);
+            if(exists === undefined){
+                guild.channels.push(id);
+            }
+        });
+        this.writeConfigAndReload();
+    }
+
+    static async removeChannels(guildID, channelIDs){
+        let guild = this.config.guilds.find(guild => guild.id === guildID);
+        channelIDs.forEach(id => {
+            guild.channels = guild.channels.filter(ch => ch !== id);
+        });
+        this.writeConfigAndReload();
+    }
+
     static getGuildPrefix(guildID){
         let guild = this.config.guilds.find(guild => guild.id === guildID);
         return guild.prefix;

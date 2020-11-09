@@ -42,7 +42,10 @@ client.on('message', (message) => {
     if(prefix !== givenPrefix) return;
 
     let args = message.content.substring(prefix.length).split(" ");
-    if(args[0] === 'ping') client.commands.get('ping').execute(message, args);
+    if(args[0] === 'ch' || args[0] === 'channel'){
+        if(args[1] === 'add') client.commands.get('addchannel').execute(message, args);
+        if(args[1] === 'rem' || args[1] === 'remove') client.commands.get('removechannel').execute(message, args);
+    }
 });
 
 //Added to new guild
