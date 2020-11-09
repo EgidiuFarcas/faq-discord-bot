@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A discord bot that automatically replies to faqs.",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js"
@@ -11,9 +12,12 @@
   "author": "G3ru1a [Egidiu Farcas]",
   "license": "MIT",
   "dependencies": {
+    "colors": "^1.4.0",
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.10.13",
+    "mongoose": "^5.10.13"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.6"
   }
 }
