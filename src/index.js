@@ -55,7 +55,9 @@ client.on('message', (message) => {
         if(args[1] === 'create') client.commands.get('createfaq').execute(message, args, prefix);
         if(args[1] === 'attach') client.commands.get('attachquestion').execute(message, args);
         if(args[1] === 'info') client.commands.get('listfaqinfo').execute(message, args);
+        if(args[1] === 'update') client.commands.get('updatefaq').execute(message, args);
         if(args[1] === 'rem' || args[1] === 'remove') client.commands.get('removefaq').execute(message, args);
+        if(args[1] === 'remove-question' || args[1] === 'rq') client.commands.get('removefaqquestion').execute(message, args);
     }
 
     if(args[0] === 'faqs') client.commands.get('listfaqs').execute(message, args);

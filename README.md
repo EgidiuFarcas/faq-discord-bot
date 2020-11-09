@@ -12,6 +12,6 @@ Commands:
 - [X] List FAQ info
 - [X] Remove FAQ
 - [X] Add question to FAQ
-- [ ] Remove question from FAQ
-- [ ] Edit response to FAQ
+- [X] Remove question from FAQ
+- [X] Edit response to FAQ
 - [ ] Help

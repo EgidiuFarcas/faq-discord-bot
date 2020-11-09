@@ -20,6 +20,14 @@ export default class FAQModel {
         return r;
     }
 
+    static async questionExists(guildID, prettyID){
+        let r = await Question.exists({
+            guildID: guildID,
+            prettyID: prettyID
+        });
+        return r;
+    }
+
     static async createQuestion(guildID, text, responsePrettyID){
         let r = await Response.findOne({guildID: guildID, prettyID: responsePrettyID});
         let q = new Question({
@@ -47,4 +55,13 @@ export default class FAQModel {
         r.deleteOne();
     }
 
+    static async removeQuestion(guildID, questionPrettyID) {
+        return await Question.findOneAndDelete({guildID: guildID, prettyID: questionPrettyID});
+    }
+
+    static async updateResponse(guildID, prettyID, text){
+        let r = await Response.findOne({guildID: guildID, prettyID: prettyID});
+        r.text = text;
+        return await r.save();
+    }
 }
