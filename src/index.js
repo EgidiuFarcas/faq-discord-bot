@@ -42,9 +42,17 @@ client.on('message', (message) => {
     if(prefix !== givenPrefix) return;
 
     let args = message.content.substring(prefix.length).split(" ");
+
+    if(args[0] === 'h' || args[0] === 'help') client.commands.get('help').execute(message);
+
     if(args[0] === 'ch' || args[0] === 'channel'){
         if(args[1] === 'add') client.commands.get('addchannel').execute(message, args);
         if(args[1] === 'rem' || args[1] === 'remove') client.commands.get('removechannel').execute(message, args);
+    }
+
+    if(args[0] === 'faq') {
+        if(args[1] === 'create') client.commands.get('createfaq').execute(message, args, prefix);
+        if(args[1] === 'attach') client.commands.get('attachquestion').execute(message, args);
     }
 });
 

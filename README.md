@@ -7,8 +7,11 @@ Commands:
 
 - [X] Add Channel
 - [X] Remove Channel
-- [ ] Add FAQ
+- [X] Add FAQ
+- [ ] List FAQs
+- [ ] List FAQ info
 - [ ] Remove FAQ
-- [ ] Add question to FAQ
+- [X] Add question to FAQ
+- [ ] Remove question from FAQ
 - [ ] Edit response to FAQ
 - [ ] Help
