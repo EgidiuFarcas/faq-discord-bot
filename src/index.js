@@ -43,7 +43,7 @@ client.on('message', (message) => {
 
     let args = message.content.substring(prefix.length).split(" ");
 
-    if(args[0] === 'h' || args[0] === 'help') client.commands.get('help').execute(message);
+    if(args[0] === 'h' || args[0] === 'help') client.commands.get('help').execute(message, prefix);
 
     if(args[0] === 'ch' || args[0] === 'channel'){
         if(args[1] === 'add') client.commands.get('addchannel').execute(message, args);
@@ -51,9 +51,13 @@ client.on('message', (message) => {
     }
 
     if(args[0] === 'faq') {
+        if(args[1] === 'list') client.commands.get('listfaqs').execute(message, args);
         if(args[1] === 'create') client.commands.get('createfaq').execute(message, args, prefix);
         if(args[1] === 'attach') client.commands.get('attachquestion').execute(message, args);
+        if(args[1] === 'info') client.commands.get('listfaqinfo').execute(message, args);
     }
+
+    if(args[0] === 'faqs') client.commands.get('listfaqs').execute(message, args);
 });
 
 //Added to new guild

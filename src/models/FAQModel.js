@@ -32,4 +32,13 @@ export default class FAQModel {
         await r.save();
     }
 
+    static async getAll(guildID, populate = true){
+        if(populate) return await Response.find({guildID: guildID}).populate('questions');
+        else return await Response.find({guildID: guildID});
+    }
+
+    static async get(guildID, responsePrettyID){
+        return await Response.findOne({guildID: guildID, prettyID: responsePrettyID}).populate('questions');
+    }
+
 }
