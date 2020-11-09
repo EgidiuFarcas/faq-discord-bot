@@ -10,7 +10,7 @@ Commands:
 - [X] Add FAQ
 - [X] List FAQs
 - [X] List FAQ info
-- [ ] Remove FAQ
+- [X] Remove FAQ
 - [X] Add question to FAQ
 - [ ] Remove question from FAQ
 - [ ] Edit response to FAQ

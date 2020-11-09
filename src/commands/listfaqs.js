@@ -11,12 +11,6 @@ export default {
             .setTitle("FAQs");
 
         faqs.forEach(f => {
-            // let qestions = f.questions;
-            // let questionsText = "";
-            // qestions.forEach(q => {
-            //     questionsText += `${q.text} \`id: ${q.prettyID}\`\n`;
-            // });
-            // emb.addField(`\`${f.prettyID}\` - ${f.text}`, questionsText);
             emb.addField(`\`${f.prettyID}\``, `${f.text}`, true);
         });
 
