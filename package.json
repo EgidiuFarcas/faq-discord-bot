@@ -9,7 +9,7 @@
     "start": "node src/index.js"
   },
   "keywords": [],
-  "author": "G3ru1a [Egidiu Farcas]",
+  "author": "G3ru1a",
   "license": "MIT",
   "dependencies": {
     "colors": "^1.4.0",
