@@ -8,6 +8,11 @@ const configPath = path.join(__dirname, '../../config.json');
 export default class Config {
     static config = JSON.parse(fs.readFileSync(configPath));
 
+    static getChannels(guildID){
+        let guild = this.config.guilds.find(guild => guild.id === guildID);
+        return guild.channels;
+    }
+
     static async changePrefix(guildID, prefix){
         let guild = this.config.guilds.find(guild => guild.id === guildID);
         guild.prefix = prefix;

@@ -2,10 +2,12 @@
 import Discord from 'discord.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import levenshtien from 'damerau-levenshtein';
 import colors from 'colors'; //It's actually used
 //Utils
 import Config from './utils/Config.js';
 import Commands from './utils/Commands.js';
+import FAQModel from './models/FAQModel.js';
 
 const client = new Discord.Client();
 
@@ -33,15 +35,18 @@ client.on('ready', () => {
 
 client.on('message', (message) => {
     if(message.author.bot) return;
-    
 
-
-    //Commands
-    if(!message.member.hasPermission('MANAGE_GUILD')) return;
-
+    //Get prefixes
     let prefix = Config.getGuildPrefix(message.guild.id);
     let givenPrefix = message.content.substring(0, prefix.length);
-    if(prefix !== givenPrefix) return;
+
+    //Check for FAQ
+    if(prefix !== givenPrefix){
+        FAQCheck(message);
+        return;
+    }
+    //Commands
+    if(!message.member.hasPermission('MANAGE_GUILD')) return;
 
     let args = message.content.substring(prefix.length).split(" ");
 
@@ -52,6 +57,7 @@ client.on('message', (message) => {
     if(args[0] === 'ch' || args[0] === 'channel'){
         if(args[1] === 'add') client.commands.get('addchannel').execute(message, args);
         if(args[1] === 'rem' || args[1] === 'remove') client.commands.get('removechannel').execute(message, args);
+        if(args[1] === 'list') client.commands.get('listchannels').execute(message, args);
     }
 
     if(args[0] === 'faq') {
@@ -80,3 +86,18 @@ client.on('guildDelete', (guild) => {
 });
 
 client.login(process.env.BOT_TOKEN);
+
+async function FAQCheck(message){
+    let guild = message.guild;
+    let channels = Config.getChannels(guild.id);
+    if(channels.length !== 0 && !channels.includes(message.channel.id)) return;
+
+    let questions = await FAQModel.getAllQuestions(guild.id);
+    questions.forEach(q => {
+        let match = levenshtien(message.content, q.text);
+        if(match.similarity > .8){
+            message.reply(q.owner.text);
+            return;
+        }
+    });
+}

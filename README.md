@@ -16,5 +16,5 @@ Commands:
 - [X] Edit response to FAQ
 - [X] Change Prefix
 - [X] Help
-- [ ] List Channels
-- [ ] Look for FAQs
+- [X] List Channels
+- [X] Look for FAQs

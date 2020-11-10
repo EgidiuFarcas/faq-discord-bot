@@ -49,6 +49,10 @@ export default class FAQModel {
         return await Response.findOne({guildID: guildID, prettyID: responsePrettyID}).populate('questions');
     }
 
+    static async getAllQuestions(guildID){
+        return await Question.find({guildID: guildID, owner: {$ne: null}}).populate('owner');
+    }
+
     static async removeResponse(guildID, responsePrettyID) {
         let r = await Response.findOne({guildID: guildID, prettyID: responsePrettyID});
         r.questions.forEach(question => Question.findByIdAndDelete(question._id));
