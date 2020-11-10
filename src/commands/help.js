@@ -18,6 +18,7 @@ export default {
         addCommand(emb, prefix, 'faq remove-question/rq [Question ID]', 'Removes question from a FAQ');
         addCommand(emb, prefix, 'ch/channel add [#oneOrMoreChannels]', 'Adds channels where the bot will look for FAQs');
         addCommand(emb, prefix, 'ch/channel rem [#oneOrMoreChannels]', 'Removes channels where the bot will look for FAQs');  
+        addCommand(emb, prefix, 'ch/channel list', 'Lists the channels where the bot will look for FAQs');  
 
         message.channel.send(emb);
 
