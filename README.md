@@ -14,4 +14,5 @@ Commands:
 - [X] Add question to FAQ
 - [X] Remove question from FAQ
 - [X] Edit response to FAQ
+- [X] Change Prefix
 - [ ] Help

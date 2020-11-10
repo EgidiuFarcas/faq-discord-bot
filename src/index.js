@@ -37,11 +37,15 @@ client.on('message', (message) => {
 
 
     //Commands
+    if(!message.member.hasPermission('MANAGE_GUILD')) return;
+
     let prefix = Config.getGuildPrefix(message.guild.id);
     let givenPrefix = message.content.substring(0, prefix.length);
     if(prefix !== givenPrefix) return;
 
     let args = message.content.substring(prefix.length).split(" ");
+
+    if(args[0] === 'prefix') client.commands.get('changeprefix').execute(message, args);
 
     if(args[0] === 'h' || args[0] === 'help') client.commands.get('help').execute(message, prefix);
 
