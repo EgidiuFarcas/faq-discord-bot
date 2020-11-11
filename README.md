@@ -1,5 +1,7 @@
 ### FAQ Bot
 
+A Bot that auto-replies to FAQs with the ability to link multiple questions per answer.
+
 ## Usage
 
 **Sick of replying to the same question again and again and again? FAQ Bot got your back.**
@@ -12,7 +14,7 @@ First you need to decide where you want the bot to reply (the bot needs to have 
 
 > To see in which channels the bot works use `f?channel list`
 
-Here's how to create a FAQ
+**Here's how to create a FAQ**
 
 Create the response:
 
