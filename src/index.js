@@ -35,7 +35,7 @@ client.on('ready', () => {
 });
 
 client.on('message', (message) => {
-    console.log(message.guild.id);
+    console.log(message.guild === null);
     if(message.author.bot || message.guild === null) return;
 
     //Get prefixes
