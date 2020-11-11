@@ -35,7 +35,7 @@ client.on('ready', () => {
 });
 
 client.on('message', (message) => {
-    if(message.author.bot) return;
+    if(message.author.bot || message.guild === null) return;
 
     //Get prefixes
     let prefix = Config.getGuildPrefix(message.guild.id);
