@@ -23,7 +23,8 @@ mongoose.connect(
         useCreateIndex: true
     }, (err) => {
         if (err){
-            console.error("MongoDB Connection failed.");
+            console.error("MongoDB Connection failed.".red);
+            console.log(err);
             process.exit(5);
         }else console.log('Connected to database:'.blue, `${process.env.DB_NAME}`.yellow.bold);
     }
