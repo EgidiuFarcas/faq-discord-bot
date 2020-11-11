@@ -27,8 +27,6 @@ Create the questions (special characters (,.?!) do matter):
 
 That's all, now the bot will pickup the questions and auotmatically reply!
 
-Thank you for using it!
-
 
 
 ## Todo
