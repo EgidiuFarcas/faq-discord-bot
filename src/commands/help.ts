@@ -1,9 +1,9 @@
-import { MessageEmbed } from 'discord.js';
+import { MessageEmbed, Message } from 'discord.js';
 
 export default {
     name: 'help',
-    execute: async (message, prefix) => {
-        let emb = new MessageEmbed()
+    execute: async (message: Message, prefix: string) => {
+        let emb: MessageEmbed = new MessageEmbed()
             .setColor('#ff0099')
             .setTitle("FAQ Help");
 
@@ -22,7 +22,8 @@ export default {
 
         message.channel.send(emb);
 
-        function addCommand(emb, prefix, command, description, inline = false) {
+        function addCommand(emb: MessageEmbed, prefix: string, command: string,
+            description: string, inline: boolean = false) {
             emb.addField(`\`${prefix}${command}\``, `${description}`, inline);
         }
     }

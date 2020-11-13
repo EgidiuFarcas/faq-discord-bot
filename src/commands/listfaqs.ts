@@ -1,9 +1,9 @@
-import { MessageEmbed } from 'discord.js';
+import { MessageEmbed, Message } from 'discord.js';
 import FAQModel from '../models/FAQModel';
 
 export default {
     name: 'listfaqs',
-    execute: async (message, args) => {
+    execute: async (message: Message, args: string[]) => {
         let faqs = await FAQModel.getAll(message.guild.id, false);
         
         let emb = new MessageEmbed()

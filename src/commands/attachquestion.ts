@@ -1,10 +1,9 @@
+import {Message} from 'discord.js';
 import FAQModel from '../models/FAQModel';
-
-import Response from '../database/ResponseSchema.js';
 
 export default {
     name: 'attachquestion',
-    execute: async (message, args) => {
+    execute: async (message: Message, args: string[]) => {
         if(args.length < 4) return message.channel.send("Not enough arguments.");
         let responseID = args[2];
         let exists = await FAQModel.responseExists(message.guild.id, responseID);
