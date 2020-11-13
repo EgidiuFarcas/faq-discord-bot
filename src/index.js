@@ -4,8 +4,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import levenshtien from 'damerau-levenshtein';
 //Utils
-import Config from './utils/Config.js';
-import Commands from './utils/Commands.js';
+import Config from './utils/Config';
+import Commands from './utils/Commands';
 import FAQModel from './models/FAQModel.js';
 
 const client = new Discord.Client();

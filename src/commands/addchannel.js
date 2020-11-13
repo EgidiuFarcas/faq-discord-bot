@@ -1,4 +1,4 @@
-import Config from '../utils/Config.js';
+import Config from '../utils/Config';
 
 export default {
     name: 'addchannel',
