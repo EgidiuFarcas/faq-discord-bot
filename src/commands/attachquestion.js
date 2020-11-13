@@ -1,4 +1,4 @@
-import FAQModel from '../models/FAQModel.js';
+import FAQModel from '../models/FAQModel';
 
 import Response from '../database/ResponseSchema.js';
 

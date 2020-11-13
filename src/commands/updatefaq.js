@@ -1,4 +1,4 @@
-import FAQModel from '../models/FAQModel.js';
+import FAQModel from '../models/FAQModel';
 
 export default {
     name: 'updatefaq',

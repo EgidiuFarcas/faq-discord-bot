@@ -1,9 +1,9 @@
-import Response from '../database/ResponseSchema.ts';
-import Question from '../database/QuestionSchema.ts';
+import Response from '../database/ResponseSchema';
+import Question from '../database/QuestionSchema';
 
 export default class FAQModel {
 
-    static async createResponse(guildID, text){
+    static async createResponse(guildID: string, text: string){
         let r = new Response({
             text: text,
             guildID: guildID
@@ -12,7 +12,7 @@ export default class FAQModel {
         return r.prettyID;
     }
 
-    static async responseExists(guildID, prettyID){
+    static async responseExists(guildID: string, prettyID: string){
         let r = await Response.exists({
             guildID: guildID,
             prettyID: prettyID
@@ -20,7 +20,7 @@ export default class FAQModel {
         return r;
     }
 
-    static async questionExists(guildID, prettyID){
+    static async questionExists(guildID: string, prettyID: string){
         let r = await Question.exists({
             guildID: guildID,
             prettyID: prettyID
@@ -28,7 +28,7 @@ export default class FAQModel {
         return r;
     }
 
-    static async createQuestion(guildID, text, responsePrettyID){
+    static async createQuestion(guildID: string, text: string, responsePrettyID: string){
         let r = await Response.findOne({guildID: guildID, prettyID: responsePrettyID});
         let q = new Question({
             text: text,
@@ -40,30 +40,30 @@ export default class FAQModel {
         await r.save();
     }
 
-    static async getAll(guildID, populate = true){
+    static async getAll(guildID: string, populate: boolean = true){
         if(populate) return await Response.find({guildID: guildID}).populate('questions');
         else return await Response.find({guildID: guildID});
     }
 
-    static async get(guildID, responsePrettyID){
+    static async get(guildID: string, responsePrettyID: string){
         return await Response.findOne({guildID: guildID, prettyID: responsePrettyID}).populate('questions');
     }
 
-    static async getAllQuestions(guildID){
+    static async getAllQuestions(guildID: string){
         return await Question.find({guildID: guildID, owner: {$ne: null}}).populate('owner');
     }
 
-    static async removeResponse(guildID, responsePrettyID) {
+    static async removeResponse(guildID: string, responsePrettyID: string) {
         let r = await Response.findOne({guildID: guildID, prettyID: responsePrettyID});
-        r.questions.forEach(question => Question.findByIdAndDelete(question._id));
+        r.questions.forEach((question: any) => Question.findByIdAndDelete(question._id));
         r.deleteOne();
     }
 
-    static async removeQuestion(guildID, questionPrettyID) {
+    static async removeQuestion(guildID: string, questionPrettyID: string) {
         return await Question.findOneAndDelete({guildID: guildID, prettyID: questionPrettyID});
     }
 
-    static async updateResponse(guildID, prettyID, text){
+    static async updateResponse(guildID: string, prettyID: string, text: string){
         let r = await Response.findOne({guildID: guildID, prettyID: prettyID});
         r.text = text;
         return await r.save();
