@@ -2,7 +2,7 @@
 import Discord from 'discord.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import levenshtien from 'damerau-levenshtein';
+import levenshtien, { DamerauLevenshteinResponse } from 'damerau-levenshtein';
 //Utils
 import Config from './utils/Config';
 import Commands, { Command } from './utils/Commands';
@@ -94,7 +94,7 @@ async function FAQCheck(message: Discord.Message){
 
     let questions = await FAQModel.getAllQuestions(guild.id);
     questions.forEach((q: any) => {
-        let match = levenshtien(message.content, q.text);
+        let match: DamerauLevenshteinResponse = levenshtien(message.content, q.text);
         if(match.similarity > .8){
             message.reply(q.owner.text);
             return;
