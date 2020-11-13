@@ -4,8 +4,8 @@
   "description": "A discord bot that automatically replies to faqs.",
   "main": "src/index.js",
   "scripts": {
-    "dev-old": "nodemon src/index.js",
-    "dev": "ts-node-dev ./src/index.js",
+    "dev-old": "nodemon src/index.ts",
+    "dev": "ts-node-dev ./src/index.ts",
     "build": "tsc",
     "watch": "tsc -w",
     "serve": "node ./dist/index.js"
