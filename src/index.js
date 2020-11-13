@@ -3,7 +3,6 @@ import Discord from 'discord.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import levenshtien from 'damerau-levenshtein';
-import colors from 'colors'; //It's actually used
 //Utils
 import Config from './utils/Config.js';
 import Commands from './utils/Commands.js';
@@ -12,7 +11,7 @@ import FAQModel from './models/FAQModel.js';
 const client = new Discord.Client();
 
 dotenv.config();
-client.commands = await Commands();
+client.commands = Commands();
 
 //Connect to MongoDB
 mongoose.connect(
@@ -26,12 +25,12 @@ mongoose.connect(
             console.error("MongoDB Connection failed.".red);
             console.log(err);
             process.exit(5);
-        }else console.log('Connected to database:'.blue, `${process.env.DB_NAME}`.yellow.bold);
+        }else console.log('Connected to database:', `${process.env.DB_NAME}`);
     }
 );
 
 client.on('ready', () => {
-    console.log(`Connected to client:`.blue, `${client.user.tag}`.yellow.bold)
+    console.log(`Connected to client:`, `${client.user.tag}`)
 });
 
 client.on('message', (message) => {

@@ -3,23 +3,32 @@
   "version": "1.0.0",
   "description": "A discord bot that automatically replies to faqs.",
   "main": "src/index.js",
-  "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "dev-old": "nodemon src/index.js",
+    "dev": "ts-node-dev ./src/index.js",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "serve": "node ./dist/index.js"
   },
   "keywords": [],
   "author": "G3ru1a",
   "license": "MIT",
   "dependencies": {
     "colors": "^1.4.0",
+    "common-js": "^0.3.8",
     "damerau-levenshtein": "^1.0.6",
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
     "mongoose": "^5.10.13",
-    "shortid": "^2.2.16"
+    "shortid": "^2.2.16",
+    "typescript": "^4.0.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "@types/mongoose": "^5.10.0",
+    "@types/shortid": "0.0.29",
+    "@types/ws": "^7.4.0",
+    "nodemon": "^2.0.6",
+    "ts-node": "^9.0.0",
+    "ts-node-dev": "^1.0.0"
   }
 }

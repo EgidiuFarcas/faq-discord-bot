@@ -1,5 +1,5 @@
-import Response from '../database/ResponseSchema.js';
-import Question from '../database/QuestionSchema.js';
+import Response from '../database/ResponseSchema.ts';
+import Question from '../database/QuestionSchema.ts';
 
 export default class FAQModel {
 
