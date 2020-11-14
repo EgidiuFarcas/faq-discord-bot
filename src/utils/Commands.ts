@@ -12,7 +12,7 @@ const commandsPath: string = path.join(__dirname, '../commands');
 export default function load(): Discord.Collection<string, Command>{
      let commands: Discord.Collection<string, Command> = new Discord.Collection();
      //Get all command files
-     const commandFiles: string[] = fs.readdirSync(`${commandsPath}`).filter(file => file.endsWith('.ts'));
+     const commandFiles: string[] = fs.readdirSync(`${commandsPath}`).filter(file => !file.endsWith('.map'));
      //Setup Commands
      for(const file of commandFiles){
          let commandFile: any = require(`${commandsPath}/${file}`);

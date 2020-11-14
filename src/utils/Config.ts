@@ -9,8 +9,12 @@ export interface GuildConfig {
     channels: string[]
 }
 
+export interface IConfig {
+    guilds: GuildConfig[]
+}
+
 export default class Config {
-    static config = JSON.parse(fs.readFileSync(configPath).toString());
+    static config: IConfig = JSON.parse(fs.readFileSync(configPath).toString());
 
     static getChannels(guildID: string): string[]{
         let guild = this.config.guilds.find((guild: GuildConfig) => guild.id === guildID);
