@@ -27,6 +27,16 @@ Create the questions (special characters (,.?!) do matter):
 
 `f?faq attach [FAQ_ID] question two`
 
+You can also attach shortcuts that people can use in the channels to trigger the bot, here's how:
+
+`f?faq shortcut [FAQ_ID] word`
+
+`f?faq shortcut [FAQ_ID] word-two`
+
+To use the shortcut just do:
+
+`f?word`
+
 That's all, now the bot will pickup the questions and auotmatically reply!
 
 
