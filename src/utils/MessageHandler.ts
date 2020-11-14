@@ -1,6 +1,6 @@
 import Discord from 'discord.js';
 import Config from './Config';
-import FAQModel from '../models/FAQModel';
+import QuestionModel from '../models/QuestionModel';
 import levenshtien, { DamerauLevenshteinResponse } from 'damerau-levenshtein';
 import { Command } from "./Commands";
 
@@ -38,7 +38,7 @@ export default class MessageHandler {
         let channels = Config.getChannels(guild.id);
         if(channels.length !== 0 && !channels.includes(message.channel.id)) return;
     
-        let questions = await FAQModel.getAllQuestions(guild.id);
+        let questions = await QuestionModel.getAll(guild.id);
         questions.forEach((q: any) => {
             let match: DamerauLevenshteinResponse = levenshtien(message.content, q.text);
             if(match.similarity > .8){

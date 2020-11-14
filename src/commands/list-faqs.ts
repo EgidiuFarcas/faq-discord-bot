@@ -1,10 +1,10 @@
 import { MessageEmbed, Message } from 'discord.js';
-import FAQModel from '../models/FAQModel';
+import ResponseModel from '../models/ResponseModel';
 
 export default {
     name: 'listfaqs',
     execute: async (message: Message, args: string[]) => {
-        let faqs = await FAQModel.getAll(message.guild.id, false);
+        let faqs = await ResponseModel.getAll(message.guild.id, false);
         
         let emb = new MessageEmbed()
             .setColor('#ff0099')

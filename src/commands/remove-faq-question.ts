@@ -1,14 +1,14 @@
 import { Message } from 'discord.js';
-import FAQModel from '../models/FAQModel';
+import QuestionModel from '../models/QuestionModel';
 
 export default {
     name: 'removefaqquestion',
     execute: async (message: Message, args: string[]) => {
         if(args.length < 3) return message.channel.send("Not enough arguments.");
         let questionID = args[2];
-        let exists = await FAQModel.questionExists(message.guild.id, questionID);
+        let exists = await QuestionModel.exists(message.guild.id, questionID);
         if(!exists) return message.channel.send("Could not find a Question with that id.");
-        FAQModel.removeQuestion(message.guild.id, questionID)
+        QuestionModel.remove(message.guild.id, questionID)
             .then(() => message.react("✅"));
     }
 }

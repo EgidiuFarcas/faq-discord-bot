@@ -12,7 +12,7 @@ export interface GuildConfig {
 export default class Config {
     static config = JSON.parse(fs.readFileSync(configPath).toString());
 
-    static getChannels(guildID: string){
+    static getChannels(guildID: string): string[]{
         let guild = this.config.guilds.find((guild: GuildConfig) => guild.id === guildID);
         return guild.channels;
     }
@@ -42,7 +42,7 @@ export default class Config {
         this.writeConfigAndReload();
     }
 
-    static getGuildPrefix(guildID: string){
+    static getGuildPrefix(guildID: string): string{
         let guild = this.config.guilds.find((guild: GuildConfig) => guild.id === guildID);
         return guild.prefix;
     }
