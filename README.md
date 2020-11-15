@@ -38,23 +38,3 @@ To use the shortcut just do:
 `f?word`
 
 That's all, now the bot will pickup the questions and auotmatically reply!
-
-
-
-## Todo
-
-Commands: 
-
-- [X] Add Channel
-- [X] Remove Channel
-- [X] Add FAQ
-- [X] List FAQs
-- [X] List FAQ info
-- [X] Remove FAQ
-- [X] Add question to FAQ
-- [X] Remove question from FAQ
-- [X] Edit response to FAQ
-- [X] Change Prefix
-- [X] Help
-- [X] List Channels
-- [X] Look for FAQs
